@@ -131,15 +131,18 @@ class ConsultaStatusNfeController {
         });
       }
       
-      const opensslModulesPath = path.resolve("./libs/openssl/lib/ossl-modules");
-      process.env.OPENSSL_MODULES = opensslModulesPath;
-      
       // Detectar SO para usar os caminhos corretos
-      // const isWindows = process.platform === 'win32';
-      // const xmllintPath = isWindows ? path.resolve("./libs/libxml/bin/xmllint.exe") : "xmllint";
-      // const opensslPath = isWindows ? path.resolve("./libs/openssl/bin/openssl.exe") : "openssl";
+      const isWindows = process.platform === 'win32';
+      const xmllintPath = isWindows ? path.resolve("./libs/libxml/bin/xmllint.exe") : "xmllint";
+      const opensslPath = isWindows ? path.resolve("./libs/openssl/bin/openssl.exe") : "openssl";
       
-
+      // Limpar variáveis de OpenSSL que possam causar conflitos
+      if (!isWindows) {
+        delete process.env.OPENSSL_MODULES;
+        delete process.env.OPENSSL_CONF;
+      }
+      
+      
       const toolsConfig = {
         mod: mod,
         tpAmb: tpAmb,
@@ -148,8 +151,8 @@ class ConsultaStatusNfeController {
         timeout: 180000, // 
         CSC: csc,
         CSCid: cscId,
-        // xmllint: xmllintPath,
-        // openssl: opensslPath,
+        xmllint: xmllintPath,
+        openssl: opensslPath,
       };
       
       console.log('✅ Dados da venda carregados com sucesso');

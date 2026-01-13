@@ -7,9 +7,14 @@ npm ci
 echo "Updating package manager..."
 apt-get update
 
-echo "Installing system dependencies: libxml2-utils and openssl 1.1..."
-# Install OpenSSL 1.1 (compatible with pem library)
+echo "Removing OpenSSL 3.0 to avoid conflicts..."
+apt-get remove -y openssl || true
+
+echo "Installing system dependencies: libxml2-utils and OpenSSL 1.1..."
 apt-get install -y libxml2-utils openssl=1.1.1* ca-certificates
+
+echo "Setting OpenSSL 1.1 as default..."
+update-alternatives --install /usr/bin/openssl openssl /usr/bin/openssl 1
 
 # Verify installation
 echo ""
