@@ -39,17 +39,27 @@ axios.defaults.httpsAgent = httpsAgent;
 
 
 export async function getCertOptions(senha, fallbackPfxPath = './GTO COMERCIO 2025-2026.pfx') {
-  // -----------------------------
-  // 1) PFX BASE64 VIA ENV
-  // -----------------------------
   if (process.env.CERT_PFX_BASE64) {
     try {
-      const buf = Buffer.from(process.env.CERT_PFX_BASE64, "base64");
-      if (buf.length > 0) {
-        return { pfx: buf, senha };
+      const pfxDer = Buffer.from(process.env.CERT_PFX_BASE64, "base64");
+      const p12Asn1 = forge.asn1.fromDer(pfxDer.toString('binary'));
+      const p12 = forge.pkcs12.pkcs12FromAsn1(p12Asn1, senha); // Use a senha aqui
+
+      // Extrai o certificado e a chave privada
+      const certBags = p12.getBags({ bagType: forge.pki.oids.certBag });
+      const keyBags = p12.getBags({ bagType: forge.pki.oids.pkcs8ShroudedKeyBag });
+
+      const cert = certBags[forge.pki.oids.certBag]?.[0];
+      const privateKey = keyBags[forge.pki.oids.pkcs8ShroudedKeyBag]?.[0];
+
+      if (cert && privateKey) {
+        return {
+          cert: forge.pki.certificateToPem(cert),
+          key: forge.pki.privateKeyToPem(privateKey.key)
+        };
       }
     } catch (e) {
-      console.error("ERRO: CERT_PFX_BASE64 inválido:", e.message);
+      console.error("ERRO ao decodificar PFX com node-forge:", e.message);
     }
   }
 
@@ -67,35 +77,7 @@ export async function getCertOptions(senha, fallbackPfxPath = './GTO COMERCIO 20
     }
   }
 
-  // -----------------------------
-  // 3) PEM BASE64 (cert + key)
-  // -----------------------------
-  if (process.env.CERT_PEM_CERT_BASE64 && process.env.CERT_PEM_KEY_BASE64) {
-    try {
-      const cert = Buffer.from(process.env.CERT_PEM_CERT_BASE64, "base64");
-      const key = Buffer.from(process.env.CERT_PEM_KEY_BASE64, "base64");
-      return { cert, key };
-    } catch (e) {
-      console.error("ERRO: CERT_PEM_*_BASE64 inválido:", e.message);
-    }
-  }
-
-  // -----------------------------
-  // 4) PEM POR CAMINHO
-  // -----------------------------
-  // if (process.env.CERT_PEM_CERT_PATH && process.env.CERT_PEM_KEY_PATH) {
-  //   try {
-  //     const cert = fs.readFileSync(process.env.CERT_PEM_CERT_PATH);
-  //     const key = fs.readFileSync(process.env.CERT_PEM_KEY_PATH);
-  //     return { cert, key };
-  //   } catch (e) {
-  //     console.error("ERRO ao ler caminhos PEM:", e.message);
-  //   }
-  // }
-
-  // -----------------------------
-  // 5) NADA ENCONTRADO
-  // -----------------------------
+ 
   return null;
 }
 
