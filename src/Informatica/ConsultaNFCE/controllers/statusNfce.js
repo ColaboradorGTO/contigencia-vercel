@@ -163,7 +163,7 @@ class ConsultaStatusNfeController {
         tpAmb: tpAmb,
         UF: String(uf),
         versao: "4.00",
-        timeout: 180000, // Aumentado para 3 minutos
+        timeout: 180000, // 
         CSC: csc,
         CSCid: cscId,
       };
