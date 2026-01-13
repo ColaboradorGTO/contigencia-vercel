@@ -131,7 +131,8 @@ class ConsultaStatusNfeController {
         });
       }
       
-
+      const opensslModulesPath = path.resolve("./libs/openssl/lib/ossl-modules");
+      process.env.OPENSSL_MODULES = opensslModulesPath;
       const toolsConfig = {
         mod: mod,
         tpAmb: tpAmb,
@@ -139,7 +140,9 @@ class ConsultaStatusNfeController {
         versao: "4.00",
         timeout: 180000, // 
         CSC: csc,
-        CSCid: cscId
+        CSCid: cscId,
+        xmllint: path.resolve("./libs/libxml/bin/xmllint.exe"),
+        openssl: path.resolve("./libs/openssl/bin/openssl.exe"),
       };
       
 
