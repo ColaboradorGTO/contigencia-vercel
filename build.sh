@@ -4,8 +4,12 @@ set -e
 echo "Installing dependencies..."
 npm ci
 
-echo "Installing xmllint..."
+echo "Installing system dependencies (xmllint, openssl)..."
 apt-get update -qq
-apt-get install -y libxml2-utils > /dev/null 2>&1
+apt-get install -y libxml2-utils openssl
+
+# Verify installation
+which xmllint && echo "✅ xmllint installed" || echo "❌ xmllint not found"
+which openssl && echo "✅ openssl installed" || echo "❌ openssl not found"
 
 echo "Build complete!"
