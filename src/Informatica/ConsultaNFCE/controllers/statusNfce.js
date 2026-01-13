@@ -149,7 +149,7 @@ class ConsultaStatusNfeController {
         });
       }
       
-      // Apenas definir OPENSSL_MODULES em Windows
+      const opensslPath = path.resolve("./libs/openssl/bin/openssl.exe");
       const opensslModulesPath = path.resolve("./libs/openssl/lib/ossl-modules");
       process.env.OPENSSL_MODULES = opensslModulesPath;
 
@@ -161,8 +161,8 @@ class ConsultaStatusNfeController {
         timeout: 180000, // 
         CSC: csc,
         CSCid: cscId,
-        xmllint: path.resolve('./libs/libxml/bin/xmllint'),
-        openssl: path.resolve('./libs/openssl/bin/openssl')
+        xmllint: path.resolve("./libs/libxml/bin/xmllint.exe"),
+        openssl: path.resolve("./libs/openssl/bin/openssl.exe"),
       };
       
       // Adicionar xmllint e openssl apenas em Windows
