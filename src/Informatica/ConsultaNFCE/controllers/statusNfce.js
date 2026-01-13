@@ -166,6 +166,8 @@ class ConsultaStatusNfeController {
         timeout: 180000, // 
         CSC: csc,
         CSCid: cscId,
+        xmllint: null,
+        openssl: null
       };
       
       // Adicionar xmllint e openssl apenas em Windows
