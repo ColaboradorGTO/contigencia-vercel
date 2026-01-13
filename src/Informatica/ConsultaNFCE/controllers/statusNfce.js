@@ -37,24 +37,7 @@ const httpsAgent = new https.Agent({
 // Aplicar ao axios para HTTPS apenas
 axios.defaults.httpsAgent = httpsAgent;
 
-// Detectar SO e retornar extensão correta
-const getToolPath = (basePath, executable) => {
-  const isWindows = os.platform() === 'win32';
-  
-  if (!isWindows) {
-    // Em Linux, tentar usar o executável do sistema primeiro
-    try {
-      const systemPath = `/usr/bin/${executable}`;
-      if (fs.existsSync(systemPath)) {
-        return systemPath;
-      }
-    } catch (e) {}
-  }
-  
-  // Caso contrário, usar o caminho local
-  const ext = isWindows ? '.exe' : '';
-  return path.resolve(`${basePath}${executable}${ext}`);
-};
+
 
 export async function getCertOptions(senha, fallbackPfxPath = './GTO COMERCIO 2025-2026.pfx') {
   // -----------------------------
