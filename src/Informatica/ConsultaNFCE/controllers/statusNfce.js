@@ -191,7 +191,7 @@ class ConsultaStatusNfeController {
  
       return res.json({
         vendaData,
-        xml: resposta
+        // xml: resposta
       });
     } catch (error) {
       console.error('❌ Erro completo:', error);
