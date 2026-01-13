@@ -182,10 +182,10 @@ class ConsultaStatusNfeController {
       const tools = new Tools(toolsConfig, certOptions);
       
       console.log('⏳ Consultando status SEFAZ para chave:', chave);
-      const resposta = await tools.sefazStatus(chave).catch(err => {
-        console.error('❌ Erro ao consultar status da SEFAZ:', err.message);
-        throw err;
-      });
+      // const resposta = await tools.sefazStatus(chave).catch(err => {
+      //   console.error('❌ Erro ao consultar status da SEFAZ:', err.message);
+      //   throw err;
+      // });
       
 
  
