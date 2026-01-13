@@ -139,6 +139,7 @@ class ConsultaStatusNfeController {
       const xmllintPath = isWindows ? path.resolve("./libs/libxml/bin/xmllint.exe") : "xmllint";
       const opensslPath = isWindows ? path.resolve("./libs/openssl/bin/openssl.exe") : "openssl";
       
+      
       const toolsConfig = {
         mod: mod,
         tpAmb: tpAmb,
