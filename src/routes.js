@@ -1,7 +1,5 @@
 import { Router } from 'express';
 
-import ConsultaNFceController  from './Informatica/ConsultaNFCE/controllers/index.js'
-import ConsultaNFeController from './Informatica/ConsultaNFCE/controllers/nfe.js'
 import ConsultaStatusNfeController from './Informatica/ConsultaNFCE/controllers/statusNfce.js'
 
 
