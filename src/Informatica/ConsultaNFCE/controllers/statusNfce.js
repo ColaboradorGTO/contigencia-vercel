@@ -150,14 +150,9 @@ class ConsultaStatusNfeController {
       }
       
       // Apenas definir OPENSSL_MODULES em Windows
-      if (os.platform() === 'win32') {
-        const opensslModulesPath = path.resolve("./libs/openssl/lib/ossl-modules");
-        process.env.OPENSSL_MODULES = opensslModulesPath;
-      } else {
-        // Em Linux, não usar módulos legados
-        delete process.env.OPENSSL_MODULES;
-      }
-      
+      const opensslModulesPath = path.resolve("./libs/openssl/lib/ossl-modules");
+      process.env.OPENSSL_MODULES = opensslModulesPath;
+
       const toolsConfig = {
         mod: mod,
         tpAmb: tpAmb,
@@ -171,10 +166,7 @@ class ConsultaStatusNfeController {
       };
       
       // Adicionar xmllint e openssl apenas em Windows
-      if (os.platform() === 'win32') {
-        toolsConfig.xmllint = getToolPath('./libs/libxml/bin/', 'xmllint');
-        toolsConfig.openssl = getToolPath('./libs/openssl/bin/', 'openssl');
-      }
+ 
       // Em Linux, usa os comandos do sistema automaticamente
       
       console.log('✅ Dados da venda carregados com sucesso');
