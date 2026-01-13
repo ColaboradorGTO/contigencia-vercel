@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "buildCommand": "npm ci && npm run build",
+    "buildCommand": "bash build.sh",
     "builds": [
       {
         "src": "dist/server.js",

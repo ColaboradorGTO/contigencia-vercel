@@ -47,6 +47,7 @@ yarn-debug.log*
 .DS_Store
 tmp/
 uploads/
+libs/
 cert_base64.txt
 consulta.js
 consultaNfe.js
