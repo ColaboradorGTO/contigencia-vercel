@@ -1,6 +1,5 @@
 {
     "version": 2,
-    "buildCommand": "bash build.sh",
     "builds": [
       {
         "src": "dist/server.js",
