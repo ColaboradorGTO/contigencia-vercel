@@ -2,7 +2,6 @@ import { Make, Tools, docZip } from 'node-sped-nfe';
 import fs from 'fs';
 import path from 'path';
 import axios from 'axios';
-import os from 'os';
 import https from 'https';
 import 'dotenv/config';
 const url = process.env.API_URL
