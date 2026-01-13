@@ -11,8 +11,7 @@
     "start": "nodemon src/server.js ",
     "server": "nodemon src/server.js",
     "clean": "rimraf dist",
-    "build": "npm run clean && babel src --out-dir dist",
-     "vercel-build": "yum install -y openssl11 && ln -sf /usr/bin/openssl11 /tmp/openssl && npm run build"
+    "build": "npm run clean && babel src --out-dir dist"
   },
   "keywords": [],
   "author": "",
