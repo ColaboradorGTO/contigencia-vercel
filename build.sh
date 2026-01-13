@@ -1,29 +1,39 @@
 #!/bin/bash
 set -e
 
-echo "Installing dependencies..."
+echo "================================"
+echo "Installing Node dependencies..."
+echo "================================"
 npm ci
 
-echo "Updating package manager..."
+echo ""
+echo "================================"
+echo "Removing conflicting packages..."
+echo "================================"
 apt-get update
+apt-get remove -y openssl libssl3 libssl-dev || true
+apt-get autoremove -y
 
-echo "Removing OpenSSL 3.0 to avoid conflicts..."
-apt-get remove -y openssl || true
-
-echo "Installing system dependencies: libxml2-utils and OpenSSL 1.1..."
-apt-get install -y libxml2-utils openssl=1.1.1* ca-certificates
-
-echo "Setting OpenSSL 1.1 as default..."
-update-alternatives --install /usr/bin/openssl openssl /usr/bin/openssl 1
-
-# Verify installation
 echo ""
+echo "================================"
+echo "Installing OpenSSL 1.1..."
+echo "================================"
+# Add OpenSSL 1.1 repository for Debian/Ubuntu
+apt-get install -y wget curl gnupg
+echo "deb http://security.debian.org/debian-security bullseye-security main contrib non-free" | tee /etc/apt/sources.list.d/bullseye-security.list
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys DCC9EFBF77E11517 || true
+apt-get update
+apt-get install -y libssl1.1 openssl=1.1.1* libxml2-utils ca-certificates
+
+echo ""
+echo "================================"
 echo "Verifying installations..."
-which xmllint && echo "✅ xmllint installed successfully" || (echo "❌ xmllint not found" && exit 1)
-which openssl && echo "✅ openssl installed successfully" || (echo "❌ openssl not found" && exit 1)
-xmllint --version
-openssl version
+echo "================================"
+which xmllint && xmllint --version && echo "✅ xmllint OK" || (echo "❌ xmllint FAILED" && exit 1)
+which openssl && openssl version && echo "✅ openssl OK" || (echo "❌ openssl FAILED" && exit 1)
 
 echo ""
+echo "================================"
 echo "Build complete!"
+echo "================================"
 
