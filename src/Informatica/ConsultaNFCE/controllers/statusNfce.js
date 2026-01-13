@@ -165,10 +165,7 @@ class ConsultaStatusNfeController {
         openssl: path.resolve("./libs/openssl/bin/openssl.exe"),
       };
       
-      // Adicionar xmllint e openssl apenas em Windows
- 
-      // Em Linux, usa os comandos do sistema automaticamente
-      
+
       console.log('✅ Dados da venda carregados com sucesso');
       console.log('⏳ Inicializando Tools...');
       const tools = new Tools(toolsConfig, certOptions);
