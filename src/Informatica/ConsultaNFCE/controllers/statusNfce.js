@@ -145,7 +145,6 @@ class ConsultaStatusNfeController {
         openssl: path.resolve("./libs/openssl/bin/openssl.exe"),
       };
       
-
       console.log('✅ Dados da venda carregados com sucesso');
       console.log('⏳ Inicializando Tools...');
       const tools = new Tools(toolsConfig, certOptions);
