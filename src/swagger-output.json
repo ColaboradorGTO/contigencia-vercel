@@ -1,0 +1,407 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API SOFQUALITY",
+    "description": "Descrição da API SOFQUALITY"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/"
+    }
+  ],
+  "paths": {
+    "/funcionario": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Listando todos os Funcionários.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Funcionario"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Funcionario"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/empresas": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Listando todas Empresas.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empresas"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empresas"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/marcasLista": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Listando as Marcas da GTO.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GrupoEmpresarial"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/GrupoEmpresarial"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Funcionario": {
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "number",
+            "example": 22824
+          },
+          "IDFUNCIONARIO": {
+            "type": "number",
+            "example": 22824
+          },
+          "IDGRUPOEMPRESARIAL": {
+            "type": "number",
+            "example": 1
+          },
+          "IDSUBGRUPOEMPRESARIAL": {
+            "type": "number",
+            "example": 1
+          },
+          "IDEMPRESA": {
+            "type": "number",
+            "example": 1
+          },
+          "NOFUNCIONARIO": {
+            "type": "string",
+            "example": "ADANEUZA MARIA DE MORAIS DINIZ"
+          },
+          "IDPERFIL": {
+            "type": "number",
+            "example": 0
+          },
+          "NUCPF": {
+            "type": "string",
+            "example": "70201250420"
+          },
+          "NOLOGIN": {
+            "type": "string",
+            "example": "22824"
+          },
+          "PWSENHA": {
+            "type": "string",
+            "example": ""
+          },
+          "DSFUNCAO": {
+            "type": "string",
+            "example": "Financeiro"
+          },
+          "DTULTALTERACAO": {
+            "type": "string",
+            "example": "2023-07-06 10:07:41"
+          },
+          "VALORSALARIO": {
+            "type": "string",
+            "example": "0.00"
+          },
+          "DATA_DEMISSAO": {},
+          "PERC": {
+            "type": "string",
+            "example": "20.00"
+          },
+          "STATIVO": {
+            "type": "string",
+            "example": "True"
+          },
+          "PERCDESCPDV": {
+            "type": "string",
+            "example": "0.00"
+          },
+          "DSTIPO": {
+            "type": "string",
+            "example": "PN"
+          },
+          "VALORDISPONIVEL": {
+            "type": "string",
+            "example": "0.00"
+          },
+          "DTINICIODESC": {
+            "type": "string",
+            "example": "2021-01-01 12:01:00"
+          },
+          "DTFIMDESC": {
+            "type": "string",
+            "example": "2050-12-31 12:12:00"
+          },
+          "PERCDESCUSUAUTORIZADO": {
+            "type": "string",
+            "example": "0.00"
+          }
+        },
+        "required": [
+          "ID",
+          "IDFUNCIONARIO",
+          "IDGRUPOEMPRESARIAL",
+          "IDSUBGRUPOEMPRESARIAL",
+          "IDEMPRESA",
+          "NOFUNCIONARIO",
+          "IDPERFIL",
+          "NUCPF",
+          "NOLOGIN",
+          "PWSENHA",
+          "DSFUNCAO",
+          "DTULTALTERACAO",
+          "VALORSALARIO",
+          "DATA_DEMISSAO",
+          "PERC",
+          "STATIVO",
+          "PERCDESCPDV",
+          "DSTIPO",
+          "VALORDISPONIVEL",
+          "DTINICIODESC",
+          "DTFIMDESC",
+          "PERCDESCUSUAUTORIZADO"
+        ],
+        "xml": {
+          "name": "Funcionario"
+        }
+      },
+      "Loja": {
+        "type": "object",
+        "properties": {
+          "IDEMPRESA": {
+            "type": "number",
+            "example": 1
+          },
+          "STGRUPOEMPRESARIAL": {
+            "type": "number",
+            "example": 1
+          },
+          "IDGRUPOEMPRESARIAL": {
+            "type": "number",
+            "example": 1
+          },
+          "IDSUBGRUPOEMPRESARIAL": {
+            "type": "number",
+            "example": 1
+          },
+          "NORAZAOSOCIAL": {
+            "type": "string",
+            "example": "Gto Comercio Atacadista De Confec E Calçados Ltda"
+          },
+          "NOFANTASIA": {
+            "type": "string",
+            "example": "0001 - TO - Recanto 1 Matriz"
+          },
+          "NUCNPJ": {
+            "type": "string",
+            "example": "36769602000155"
+          },
+          "NUINSCESTADUAL": {
+            "type": "string",
+            "example": "0733785500180"
+          },
+          "NUINSCMUNICIPAL": {
+            "type": "string",
+            "example": ""
+          },
+          "CNAE": {
+            "type": "string",
+            "example": "4781400"
+          },
+          "EENDERECO": {
+            "type": "string",
+            "example": "Qd 103, Comercial Local S/N, Lt 01"
+          },
+          "ECOMPLEMENTO": {
+            "type": "string",
+            "example": ""
+          },
+          "EBAIRRO": {
+            "type": "string",
+            "example": "Recanto Das Emas"
+          },
+          "ECIDADE": {
+            "type": "string",
+            "example": "Brasília"
+          },
+          "SGUF": {
+            "type": "string",
+            "example": "DF"
+          },
+          "NUUF": {
+            "type": "number",
+            "example": 53
+          },
+          "NUCEP": {
+            "type": "string",
+            "example": "72600329"
+          },
+          "NUIBGE": {
+            "type": "string",
+            "example": "5300108"
+          },
+          "EEMAILPRINCIPAL": {
+            "type": "string",
+            "example": "to001@tesouradeouro.com.br"
+          },
+          "EEMAILCOMERCIAL": {
+            "type": "string",
+            "example": ""
+          },
+          "EEMAILFINANCEIRO": {
+            "type": "string",
+            "example": ""
+          },
+          "EEMAILCONTABILIDADE": {
+            "type": "string",
+            "example": ""
+          },
+          "NUTELPUBLICO": {
+            "type": "string",
+            "example": ""
+          },
+          "NUTELCOMERCIAL": {
+            "type": "string",
+            "example": ""
+          },
+          "NUTELFINANCEIRO": {
+            "type": "string",
+            "example": ""
+          },
+          "NUTELGERENCIA": {
+            "type": "string",
+            "example": ""
+          },
+          "EURL": {
+            "type": "string",
+            "example": ""
+          },
+          "PATHIMG": {
+            "type": "string",
+            "example": ""
+          },
+          "NUCNAE": {
+            "type": "string",
+            "example": "4781400"
+          },
+          "STECOMMERCE": {
+            "type": "string",
+            "example": "False"
+          },
+          "DTULTATUALIZACAO": {
+            "type": "string",
+            "example": "2021-08-31 00:00:00"
+          },
+          "STATIVO": {
+            "type": "string",
+            "example": "True"
+          },
+          "ALIQPIS": {
+            "type": "string",
+            "example": "1.65"
+          },
+          "ALIQCOFINS": {
+            "type": "string",
+            "example": "7.60"
+          }
+        },
+        "required": [
+          "IDEMPRESA",
+          "STGRUPOEMPRESARIAL",
+          "IDGRUPOEMPRESARIAL",
+          "IDSUBGRUPOEMPRESARIAL",
+          "NORAZAOSOCIAL",
+          "NOFANTASIA",
+          "NUCNPJ",
+          "NUINSCESTADUAL",
+          "NUINSCMUNICIPAL",
+          "CNAE",
+          "EENDERECO",
+          "ECOMPLEMENTO",
+          "EBAIRRO",
+          "ECIDADE",
+          "SGUF",
+          "NUUF",
+          "NUCEP",
+          "NUIBGE",
+          "EEMAILPRINCIPAL",
+          "EEMAILCOMERCIAL",
+          "EEMAILFINANCEIRO",
+          "EEMAILCONTABILIDADE",
+          "NUTELPUBLICO",
+          "NUTELCOMERCIAL",
+          "NUTELFINANCEIRO",
+          "NUTELGERENCIA",
+          "EURL",
+          "PATHIMG",
+          "NUCNAE",
+          "STECOMMERCE",
+          "DTULTATUALIZACAO",
+          "STATIVO",
+          "ALIQPIS",
+          "ALIQCOFINS"
+        ],
+        "xml": {
+          "name": "Loja"
+        }
+      },
+      "Marca": {
+        "type": "object",
+        "properties": {
+          "IDGRUPOEMPRESARIAL": {
+            "type": "number",
+            "example": 1
+          },
+          "DSGRUPOEMPRESARIAL": {
+            "type": "string",
+            "example": "TO - TESOURA DE OURO"
+          },
+          "STATIVO": {
+            "type": "string",
+            "example": "True"
+          }
+        },
+        "required": [
+          "IDGRUPOEMPRESARIAL",
+          "DSGRUPOEMPRESARIAL",
+          "STATIVO"
+        ],
+        "xml": {
+          "name": "Marca"
+        }
+      }
+    }
+  }
+}
