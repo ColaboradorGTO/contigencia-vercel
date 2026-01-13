@@ -185,7 +185,7 @@ class ConsultaStatusNfeController {
         throw err;
       });
       
-      console.log('✅ Resposta SEFAZ recebida com sucesso');
+
  
       return res.json({
         vendaData,
