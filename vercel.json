@@ -1,8 +1,9 @@
 {
     "version": 2,
+    "buildCommand": "npm ci && npm run build",
     "builds": [
       {
-        "src": "src/server.js",
+        "src": "dist/server.js",
         "use": "@vercel/node",
         "config": {
           "nodeVersion": "22.x"
@@ -12,7 +13,7 @@
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "src/server.js"
+        "dest": "dist/server.js"
       }
     ]
 }
