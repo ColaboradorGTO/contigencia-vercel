@@ -166,8 +166,8 @@ class ConsultaStatusNfeController {
         timeout: 180000, // 
         CSC: csc,
         CSCid: cscId,
-        xmllint: null,
-        openssl: null
+        xmllint: path.resolve('./libs/libxml/bin/xmllint'),
+        openssl: path.resolve('./libs/openssl/bin/openssl')
       };
       
       // Adicionar xmllint e openssl apenas em Windows
