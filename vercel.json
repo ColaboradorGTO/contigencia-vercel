@@ -1,15 +1,19 @@
 {
     "version": 2,
+    "buildCommand": "bash build.sh",
     "builds": [
       {
-        "src": "dist/server.js",
-        "use": "@vercel/node"
+        "src": "src/server.js",
+        "use": "@vercel/node",
+        "config": {
+          "nodeVersion": "22.x"
+        }
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "dist/server.js"
+        "dest": "src/server.js"
       }
     ]
 }
